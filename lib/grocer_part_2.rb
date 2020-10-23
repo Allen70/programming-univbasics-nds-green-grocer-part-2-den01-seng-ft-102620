@@ -45,4 +45,5 @@ def checkout(cart, coupons)
  if current_bill >= 100
    current_bill * 0.9
  end
+ current_bill
 end
