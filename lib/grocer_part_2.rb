@@ -38,11 +38,11 @@ def checkout(cart, coupons)
   apply_clearance( apply_coupons(consolidate_cart(cart),coupons)).each{|index|
 
   current_bill += (index[:price]*index[:count])
- if current_bill >= 100
-   current_bill * 0.9
- end
+
 
  }
  current_bill
-
+ if current_bill >= 100
+   current_bill * 0.9
+ end
 end
