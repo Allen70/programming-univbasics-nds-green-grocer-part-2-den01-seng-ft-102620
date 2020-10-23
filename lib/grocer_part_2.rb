@@ -1,25 +1,61 @@
 require_relative './part_1_solution.rb'
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+  cart.each{|index|
+  index.each{|key,value|
+  coupons.each{|cindex|
+  cindex.each{|ckey,cvalue|
+    if key == ckey && value == cvalue && cindex[:num] <= index[:count]
+      
+      cart[cart.length] = {}
+      cart[cart.length-1][:item] = index[:item] + " W/COUPON"
+      cart[cart.length-1][:price] = cindex[:cost]/cindex[:num]
+      cart[cart.length-1][:clearance] = index[:clearance]
+      cart[cart.length-1][:count] = cindex[:num]
+      index[:count] -= cindex[:num]
+    end
+  }
+  }
+  }
+  }
 end
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+  cart.each{|index|
+  if index[:clearance] == true
+  index[:price] = (index[:price]*0.8).round(2)
+  end
+  }
 end
 
 def checkout(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # This method should call
-  # * consolidate_cart
-  # * apply_coupons
-  # * apply_clearance
-  #
-  # BEFORE it begins the work of calculating the total (or else you might have
-  # some irritated customers
+   current_bill = 0
+   count =0
+  binding.pry
+  consolidate_cart(cart)
+  cart.each{|index|
+  array= []
+  if cart[count][:item] == cart[count+1][:item]
+      if cart[count][:count] && cart[count+1][:count]
+      cart[count][:count] + cart[count+1][:count]
+      cart[count+1].slice!
+      count +=1
+    end
+  end
+  }
+  binding.pry
+  apply_coupons(cart,coupons)
+  binding.pry
+  apply_clearance(cart)
+  binding.pry
+  cart.each{|index|
+
+  current_bill += (index[:price]*index[:count])
+ if current_bill >= 100
+   current_bill * 0.9
+ end
+ binding.pry
+ }
+ current_bill
+
 end
