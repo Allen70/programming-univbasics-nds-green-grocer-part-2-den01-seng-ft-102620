@@ -31,7 +31,7 @@ end
 def checkout(cart, coupons)
    current_bill = 0
    count =0
-  binding.pry
+  
   consolidate_cart(cart)
   cart.each{|index|
   array= []
