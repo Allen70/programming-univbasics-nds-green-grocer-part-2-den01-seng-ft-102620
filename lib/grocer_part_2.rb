@@ -32,10 +32,10 @@ def checkout(cart, coupons)
    current_bill = 0
    count =0
   
-  consolidate_cart(cart)
-  apply_coupons(,coupons)
+  
+  apply_coupons(consolidate_cart(cart),coupons)
  
-  apply_clearance(cart)
+  apply_clearance()
   
   cart.each{|index|
 
