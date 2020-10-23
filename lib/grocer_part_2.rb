@@ -33,16 +33,7 @@ def checkout(cart, coupons)
    count =0
   
   consolidate_cart(cart)
-  cart.each{|index|
-  array= []
-  if cart[count][:item] == cart[count+1][:item]
-      if cart[count][:count] && cart[count+1][:count]
-      cart[count][:count] + cart[count+1][:count]
-      cart[count+1].slice!
-      count +=1
-    end
-  end
-  }
+ 
   apply_coupons(cart,coupons)
  
   apply_clearance(cart)
