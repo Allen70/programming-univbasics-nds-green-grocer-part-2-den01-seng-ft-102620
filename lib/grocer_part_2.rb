@@ -35,9 +35,7 @@ def checkout(cart, coupons)
   
  
  
-  apply_clearance( apply_coupons(consolidate_cart(cart),coupons))
-  
-  cart.each{|index|
+  apply_clearance( apply_coupons(consolidate_cart(cart),coupons)).each{|index|
 
   current_bill += (index[:price]*index[:count])
  if current_bill >= 100
