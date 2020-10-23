@@ -43,18 +43,17 @@ def checkout(cart, coupons)
     end
   end
   }
-  binding.pry
   apply_coupons(cart,coupons)
-  binding.pry
+ 
   apply_clearance(cart)
-  binding.pry
+  
   cart.each{|index|
 
   current_bill += (index[:price]*index[:count])
  if current_bill >= 100
    current_bill * 0.9
  end
- binding.pry
+
  }
  current_bill
 
