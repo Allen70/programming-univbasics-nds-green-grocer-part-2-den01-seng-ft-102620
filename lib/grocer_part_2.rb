@@ -33,8 +33,7 @@ def checkout(cart, coupons)
    count =0
   
   consolidate_cart(cart)
- 
-  apply_coupons(cart,coupons)
+  apply_coupons(,coupons)
  
   apply_clearance(cart)
   
