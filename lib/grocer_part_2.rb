@@ -33,9 +33,9 @@ def checkout(cart, coupons)
    count =0
   
   
-  apply_coupons(consolidate_cart(cart),coupons)
  
-  apply_clearance()
+ 
+  apply_clearance( apply_coupons(consolidate_cart(cart),coupons))
   
   cart.each{|index|
 
